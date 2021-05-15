@@ -1,12 +1,4 @@
 const socket = io()
-/*
-socket.on('countUpdated', function functionOcuuredWhenEventEmited(value) {
-    console.log(`count is ${value}`);
-})
-
-document.getElementById('counter').addEventListener('click', function () {
-    socket.emit('increment')
-})*/
 
 // Elements
 const $messageForm = document.getElementById('message-form')
@@ -49,7 +41,6 @@ function autoScroll() {
 }
 
 socket.on('message', function (value) {
-    console.log(value);
     const html = Mustache.render(messageTemplate, {
         username: value.username,
         message: value.text,
@@ -60,7 +51,6 @@ socket.on('message', function (value) {
 })
 
 socket.on('locationMessage', function (value) {
-    console.log(value);
     const html = Mustache.render(locationTemplate, {
         username: value.username,
         url: value.url,
